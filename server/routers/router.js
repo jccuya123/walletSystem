@@ -21,7 +21,7 @@ router.get('/', function(req, res){
           if (err) {
             console.error(err.message);
           }
-          res.send(row.id + "\t" + row.name);
+          res.send(row.id + "\t" + row.name + "\t" + row.balance);
           db.close();
         });
       });

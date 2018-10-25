@@ -6,6 +6,7 @@ const morgan = require('morgan')
 const path = require('path')
 const port = 3000
 const router = require('./server/routers/router')
+const query = require('./server/routers/query')
 
 //middleware
 app.use(morgan('dev'));
@@ -19,7 +20,7 @@ app.use(bodyParser.json());
 
 //router
 app.use('/', router);
-
+// app.use('/', query);
 
 //listener
 app.listen(port, (err) => {
