@@ -1,0 +1,12 @@
+{
+    "accounts": [
+    {
+        "id": "1",
+        "accountNumber": "0000-0000-0001",
+        "name": "Machy Llego",
+        "address": "Pasig City",
+        "balance": 10000,
+        "pin": "123"
+    }
+]
+}
