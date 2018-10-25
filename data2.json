@@ -1,0 +1,12 @@
+{
+	"accountslog": [
+		{
+			"id": "1",
+			"accountNumber": "0000-0000-0001",
+			"name": "Machy Llego",
+			"amount": 200,
+			"status": "withdraw",
+			"balance": "0"
+		}
+	]
+}

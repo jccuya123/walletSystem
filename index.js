@@ -1,29 +1,29 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const app = express()
-const sqlite3 = require('sqlite3').verbose()
-const morgan = require('morgan')
-const path = require('path')
-const port = 3000
-const router = require('./server/routers/router')
-const query = require('./server/routers/query')
+var express = require('express');
+var app = express();
+var bodyParser = require('body-parser');
+var morgan = require('morgan');
+var PORT = 3300;
 
-//middleware
-app.use(morgan('dev'));
-
-//path
-const dbPath = path.resolve(__dirname, 'wallet.db')
-
-//interpreter
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(morgan('common'));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-//router
-app.use('/', router);
-// app.use('/', query);
+app.use(function (req, res, next) {
+  console.log('Global middleware here.');
+  next();
+});
 
-//listener
-app.listen(port, (err) => {
-  if(err) { return console.error(err); }
-  console.log(`Listening to ${port}...`);
+/** index */
+app.get('/', (req, res) => {
+  res.json({ hello: "world" });
+});
+
+const indexRouter = require('./server/routers/indexRouter');
+app.use('/accounts', function (req, res, next) {
+  console.log('Accounts middleware.');
+  next();
+} ,indexRouter);
+
+app.listen(PORT, () => {
+  console.log(`Listening to port ${PORT}`);
 });
